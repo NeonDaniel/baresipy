@@ -372,7 +372,9 @@ class BareSIP(Thread):
                     elif "ua: SIP register failed:" in out or\
                             "401 Unauthorized" in out or \
                             "Register: Destination address required" in out or\
-                            "Register: Connection timed out" in out:
+                            "Register: Connection timed out" in out or\
+                            "403 Wrong Password" in out or\
+                            "400 Bad From URI" in out:
                         self.handle_error(out)
                         self.handle_login_failure()
                     elif "Incoming call from: " in out:

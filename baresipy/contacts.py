@@ -70,9 +70,12 @@ class ContactList:
     def add_contact(self, name, url):
         if self.get_contact(name) is not None:
             raise ContactExists
-        with JsonDatabase("contacts", self.db_path) as db:
-            user = {"name": name, "url": url}
-            db.add_item(user)
+        try:
+            with JsonDatabase("contacts", self.db_path) as db:
+                user = {"name": name, "url": url}
+                db.add_item(user)
+        except Exception as e:
+            LOG.error(e)
 
     def update_contact(self, name, url):
         contact = self.get_contact(name)
