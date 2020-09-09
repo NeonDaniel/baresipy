@@ -1,6 +1,5 @@
 from time import sleep
 import pexpect
-from os.path import join, expanduser
 from opentone import ToneGenerator
 from responsive_voice import ResponsiveVoice
 from pydub import AudioSegment
